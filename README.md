@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Geospatial Data Visualization of a Dating App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [CRA](https://github.com/facebook/create-react-app). I have used Mapbox for maps and deckgl for geospatial data visualization. Turf.js was used to randomly generate geocordinates of a user to plot within it's polygon(area region).
 
-## Available Scripts
+## Live Demo
+[https://deckgl-dating-dataviz.netlify.app/](https://deckgl-dating-dataviz.netlify.app/)
 
-In the project directory, you can run:
+## Project Images
+[GeoJsonPolygon](https://i.ibb.co/ZhXqj2X/Screenshot-433.png)
+[ScatterplotPaidAndRegularUsers](https://i.ibb.co/w629VNT/Screenshot-434.png)
+[GeojsonWithHexagonLayer](https://i.ibb.co/8BBRmMG/Screenshot-432.png)
 
-### `yarn start`
+## Technologies/Libraries used
+[mapbox](https://www.mapbox.com/) - to render map. 
+[react-map-gl](https://visgl.github.io/react-map-gl/) - to use Mapbox GL JS in React applications easily.
+[deck.gl](https://deck.gl/) - to visualize large-scale geospatial datasets.
+[turf](https://turfjs.org/) - to generate random geocordinates within a given polygon.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Features`
+1) Visualization of pro users and regular users using ScatterplotLayer.
+2) Visualization of GeoJson data uisng GeoJsonLayer and added toolip on hover to show info about the area like Toal no. of users, Male users, Female users, Pro users, Pincode of the area.
+3) Visualization of users using HexagonLayer to show aggregation of users on the maps.
+4) Added support to select/render different layers using checkbox.
+5) Added support to tweak the radius range of ScatterplotLayer and HexagonLayer to render points differently.
+6) Added Dark/Light mode support along with other styles too.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Future Enhancements`
+1) Adding more filters to render different informations on the map.
+2) Add more layers to render different types of visualizations like Heatmaps.
+3) Improve code quality by refactoring and abstracting some components.
+4) Improve folder structure to make it more robust and scalable.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
