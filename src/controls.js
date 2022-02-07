@@ -5,7 +5,7 @@ export const HEXAGON_CONTROLS = {
   showHexagon: {
     displayName: "Show Hexagon",
     type: "boolean",
-    value: true,
+    value: false,
   },
   radius: {
     displayName: "Hexagon Radius",
@@ -31,17 +31,32 @@ export const HEXAGON_CONTROLS = {
     min: 80,
     max: 100,
   },
+  showScatterplot: {
+    displayName: "Show Scatterplot",
+    type: "boolean",
+    value: true,
+  },
   radiusScale: {
     displayName: "Scatterplot Radius",
     type: "range",
-    value: 30,
+    value: 100,
     step: 10,
     min: 10,
     max: 200,
+  },
+  showGeoJson: {
+    displayName: "Show GeoJSON",
+    type: "boolean",
+    value: true,
   },
 };
 
 export const SCATTERPLOT_CONTROLS = {
+  showScatterplot: {
+    displayName: "Show Scatterplot",
+    type: "boolean",
+    value: true,
+  },
   radiusScale: {
     displayName: "Scatterplot Radius",
     type: "range",
@@ -49,11 +64,6 @@ export const SCATTERPLOT_CONTROLS = {
     step: 10,
     min: 10,
     max: 200,
-  },
-  showHexagon: {
-    displayName: "Show Hexagon",
-    type: "boolean",
-    value: true,
   },
 };
 
@@ -119,7 +129,6 @@ export class LayerControls extends Component {
 
   render() {
     const { title, settings, propTypes = {} } = this.props;
-
     return (
       <div className="layer-controls" style={layerControl}>
         {title && <h4>{title}</h4>}
