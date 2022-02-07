@@ -21,7 +21,7 @@ select {
   padding: 8px;
   border-radius: 4px;
   box-shadow: 2px 2px 8px #999;
-  background: #eee;
+  background: #ccc;
   border: none;
   outline: none;
   display: inline-block;
@@ -29,7 +29,7 @@ select {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-  color: hotpink;
+  color: #000;
 }
 
 select option {
@@ -37,4 +37,57 @@ select option {
   background: #ffffff;
   color: #000000;
   text-shadow: 0 1px 0 rgba(14, 123, 212, 0.618);
+}
+
+.legend {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  height: 40px;
+  width: 600px;
+  z-index: 2;
+  background: #ffffff;
+}
+
+.legend .legend-item {
+  height: 100%;
+  width: 100px;
+  z-index: 3;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend .legend-item.color1 {
+  background-color: rgb(156, 15, 72);
+}
+
+.legend .legend-item.color2 {
+  background-color: rgb(230, 9, 101);
+}
+
+.legend .legend-item.color3 {
+  background-color: rgb(184, 64, 94);
+}
+
+.legend .legend-item.color4 {
+  background-color: rgb(249, 72, 146);
+}
+
+.legend .legend-item.color5 {
+  background-color: rgb(255, 161, 201);
+}
+
+.legend .legend-item.color6 {
+  color: #000;
+  background-color: rgb(255, 255, 255);
+}
+
+.legend-title {
+  position: absolute;
+  right: 20px;
+  bottom: 60px;
+  color: aqua;
 }

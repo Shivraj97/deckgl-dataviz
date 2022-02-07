@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { StaticMap } from "react-map-gl";
-import {
-  LayerControls,
-  MapStylePicker,
-  HEXAGON_CONTROLS,
-} from "./controls";
 import DeckGL from "deck.gl";
+import * as turf from "@turf/turf";
+import { LayerControls, MapStylePicker, HEXAGON_CONTROLS } from "./controls";
 import { renderLayers } from "./deckgl-layers";
 import Hover from "./components/Hover";
 import "./App.css";
+import Legend from "./components/Legend";
 
 const INITIAL_VIEW_STATE = {
   longitude: 77.6055933,
@@ -17,6 +15,58 @@ const INITIAL_VIEW_STATE = {
   pitch: 0,
   bearing: 0,
 };
+
+function randomPointInPoly(polygonGeoJson) {
+  var bounds = getPolygonBoundingBox(polygonGeoJson);
+  //[xMin, yMin][xMax, yMax]
+  var x_min = bounds[0][0];
+  var x_max = bounds[1][0];
+  var y_min = bounds[0][1];
+  var y_max = bounds[1][1];
+
+  var lat = y_min + Math.random() * (y_max - y_min);
+  var lng = x_min + Math.random() * (x_max - x_min);
+
+  var poly = polygonGeoJson;
+  var pt = turf.point([lng, lat]);
+  var inside = turf.booleanPointInPolygon(pt, polygonGeoJson);
+
+  if (inside) {
+    return pt;
+  } else {
+    return randomPointInPoly(poly);
+  }
+}
+
+function getPolygonBoundingBox(feature) {
+  // bounds [xMin, yMin][xMax, yMax]
+  var bounds = [[], []];
+  var polygon;
+  var latitude;
+  var longitude;
+
+  for (var i = 0; i < feature.geometry.coordinates.length; i++) {
+    if (feature.geometry.coordinates.length === 1) {
+      // Polygon coordinates[0][nodes]
+      polygon = feature.geometry.coordinates[0];
+    } else {
+      // Polygon coordinates[poly][0][nodes]
+      polygon = feature.geometry.coordinates[i][0];
+    }
+
+    for (var j = 0; j < polygon.length; j++) {
+      longitude = polygon[j][0];
+      latitude = polygon[j][1];
+
+      bounds[0][0] = bounds[0][0] < longitude ? bounds[0][0] : longitude;
+      bounds[1][0] = bounds[1][0] > longitude ? bounds[1][0] : longitude;
+      bounds[0][1] = bounds[0][1] < latitude ? bounds[0][1] : latitude;
+      bounds[1][1] = bounds[1][1] > latitude ? bounds[1][1] : latitude;
+    }
+  }
+
+  return bounds;
+}
 
 export default class App extends Component {
   state = {
@@ -75,7 +125,10 @@ export default class App extends Component {
       let femaleUsers = 0;
       usersData = users.filter((user) => {
         if (area.properties.area_id === user.area_id) {
-          user.position = area.geometry.coordinates[0][0];
+          const {
+            geometry: { coordinates },
+          } = randomPointInPoly(area);
+          user.position = coordinates;
           usersCount++;
         }
         return area.properties.area_id === user.area_id;
@@ -98,6 +151,7 @@ export default class App extends Component {
         }
       });
     }
+
     this.setState({
       areas,
       users,
@@ -153,6 +207,7 @@ export default class App extends Component {
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOXTOKEN}
           />
         </DeckGL>
+        <Legend />
       </div>
     );
   }

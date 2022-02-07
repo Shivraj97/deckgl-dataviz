@@ -1,8 +1,8 @@
 import { ScatterplotLayer, HexagonLayer, GeoJsonLayer } from "deck.gl";
 
 //ScatterplotLayer Constants
-const PICKUP_COLOR = [114, 19, 108];
-const DROPOFF_COLOR = [243, 185, 72];
+const PRO_USER = [0, 48, 143];
+const NON_PRO_USER = [114, 160, 193];
 
 //HexagonLayer Constants
 const HEATMAP_COLORS = [
@@ -52,14 +52,14 @@ export function renderLayers(props) {
       new ScatterplotLayer({
         id: "scatterplot",
         getPosition: (d) => d.position,
-        getFillColor: (d) => (d.pickup ? PICKUP_COLOR : DROPOFF_COLOR),
+        getFillColor: (d) => (d.is_pro_user ? PRO_USER : NON_PRO_USER),
         getRadius: (d) => 5,
-        opacity: 0.8,
+        opacity: 1,
         pickable: true,
         radiusMinPixels: 0.25,
         radiusMaxPixels: 30,
         data: users,
-        // onHover,
+        onHover,
         ...settings,
       }),
     settings.showHexagon &&
@@ -74,7 +74,7 @@ export function renderLayers(props) {
         opacity: 0.8,
         pickable: true,
         data: users,
-        // onHover,
+        onHover,
         ...settings,
       }),
     settings.showGeoJson &&
