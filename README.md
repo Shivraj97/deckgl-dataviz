@@ -29,6 +29,7 @@ This project was bootstrapped with [CRA](https://github.com/facebook/create-reac
 2) Add more layers to render different types of visualizations like Heatmaps.
 3) Improve code quality by refactoring and abstracting some components.
 4) Improve folder structure to make it more robust and scalable.
+5) Improving the overall UI/UX
 
 
 
