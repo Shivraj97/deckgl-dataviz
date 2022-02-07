@@ -18,7 +18,7 @@ This project was bootstrapped with [CRA](https://github.com/facebook/create-reac
 
 ### `Features`
 1) Visualization of pro users and regular users using ScatterplotLayer.
-2) Visualization of GeoJson data uisng GeoJsonLayer and added toolip on hover to show info about the area like Toal no. of users, Male users, Female users, Pro users, Pincode of the area.
+2) Visualization of GeoJson data uisng GeoJsonLayer and added toolip on hover to show info about the area like Total no. of users, Male users, Female users, Pro users, Pincode of the area.
 3) Visualization of users using HexagonLayer to show aggregation of users on the maps.
 4) Added support to select/render different layers using checkbox.
 5) Added support to tweak the radius range of ScatterplotLayer and HexagonLayer to render points differently.
